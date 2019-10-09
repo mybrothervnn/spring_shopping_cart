@@ -1,0 +1,22 @@
+<div class="header-container"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+ 
+   <div class="site-name">Cửa hàng Allsia</div>
+   
+   <div class="header-bar">
+   		<!-- isAuthenticated() không có tác dụng  -->
+      <th:block sec:authorize="isAuthenticated()">
+         Hello
+         <!-- <a th:href="@{/admin/accountInfo}" th:utext="LOI_request.userPrincipal.name">..</a> -->
+         <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a> 
+         &nbsp;|&nbsp;
+         <a th:href="@{/admin/logout}">Logout</a>
+      </th:block>
+       
+      <th:block sec:authorize="!isAuthenticated()">
+         <a th:href="@{/admin/login}">Login</a>
+      </th:block>
+   </div>
+   
+</div>
